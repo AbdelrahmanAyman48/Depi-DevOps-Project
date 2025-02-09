@@ -1,0 +1,34 @@
+---
+- name: Deploy Java Web App using Docker
+  hosts: local
+  become: yes
+  gather_facts: no
+
+  tasks:
+    - name: Install Docker (if not installed)
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Pull the Docker image from DockerHub
+      docker_image:
+        name: danielmagdy/final_project
+        tag: latest
+        source: pull
+        state: present
+
+    - name: Run the Docker container
+      docker_container:
+        name: java-web-app
+        image: danielmagdy/final_project:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "8080:8080"
