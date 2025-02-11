@@ -1,4 +1,4 @@
----
+rh---
 - name: Deploy Java Web App using Docker
   hosts: local
   become: yes
@@ -19,7 +19,7 @@
 
     - name: Pull the Docker image from DockerHub
       docker_image:
-        name: danielmagdy/final_project
+        name: abdelrahman/final_project
         tag: latest
         source: pull
         state: present
@@ -27,7 +27,7 @@
     - name: Run the Docker container
       docker_container:
         name: java-web-app
-        image: danielmagdy/final_project:latest
+        image: abdelrahman/final_project:latest
         state: started
         restart_policy: always
         ports:
