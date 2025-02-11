@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'danielmagdy/final_project:latest'
+        DOCKER_IMAGE = 'abdelrahman/final_project:latest'
         DOCKER_CREDENTIALS_ID = 'DOCKER_CREDENTIALS_ID'
 	}
 
